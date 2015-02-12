@@ -1,0 +1,270 @@
+@import url(http://fonts.googleapis.com/css?family=Economica);
+html {overflow: auto;}
+
+html, body {margin: 0px; padding: 0px; height: 100%; border: none; background-color: #FFF5E2; }
+iframe {
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 100%;
+} 
+
+div.frameContainer {
+    display: inline-block;
+    position: relative;
+    padding-bottom: 56.25%;  /*proportion value to aspect ratio 16:9 (9 / 16 = 0.5625 or 56.25%) */
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;	
+    background-color: #3880ad;
+    width: 80%;
+}
+
+a:visited {
+    color: #958567;
+}
+
+a{
+    color: #587495;
+}
+
+
+/*  Nav Stuff */
+
+.toctitle {
+    font-size: 1em;
+    width: 100%;
+    text-align: center;
+    height: 60px;
+    top: 20px;
+    left: 2%;
+    background-color: #8A9BAF;
+    width: 18%;
+    position: fixed;
+    text-align: center;
+
+}
+.naventry {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+#navcontainer {
+    display: inline-block;
+    width: 20%;
+	background-color: #E2D1B2;
+	float: left;
+    height: 100%;
+    overflow: auto;
+}
+
+.goback {
+    font-family: 'Economica', sans-serif;
+    font-size: 1em;
+    /*margin-left: 15%;*/
+    top: 0;
+    left: 2%;
+    height: 20px;
+    background-color: #B2C8E2;
+    text-decoration: underline;
+    cursor: pointer;
+    width: 18%;
+    position: fixed;
+    text-align: center;
+}
+
+nav.leftpanel {
+    display: inline-block;
+    width: 90%;
+    background-color: #E2D1B2;
+    height: 100%;
+    font-family: 'Economica', sans-serif;
+    margin-top: 85px;
+    margin-left: 2%;
+
+}
+
+#switchtext {
+    -ms-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+
+    -ms-transform-origin: left top 0;
+    -moz-transform-origin: left top 0;
+    -webkit-transform-origin: left top 0;
+    transform-origin: left top 0;
+    margin-left: 20px;
+    margin-top: 10em;
+    text-align: center;
+
+    position: absolute;
+    background-color: rgba(255, 255, 255, .7);
+    padding: 1px;
+    width: 10em;
+    height: 100%;
+
+    font-family: 'Economica', sans-serif;
+}
+
+#switchstrip {
+    display: inline-block;
+    width: 2%;
+    background-color: #587495;
+    height: 100%;
+    position: absolute;
+    top: 0; 
+    left: 0;
+}
+
+
+/* tagging stuff */
+.pageinfo {
+    width: 100%;
+    height: 2em;
+    padding: 0;
+    /*background-color: rgba(0, 0, 0, .75);*/
+    position: absolute;
+    top:-2em;
+    left:0;
+
+    background: -moz-linear-gradient(left,  rgba(0,0,0,0.75) 0%, rgba(0,0,0,0) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%,rgba(0,0,0,0.75)), color-stop(100%,rgba(0,0,0,0))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left,  rgba(0,0,0,0.75) 0%,rgba(0,0,0,0) 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  rgba(0,0,0,0.75) 0%,rgba(0,0,0,0) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  rgba(0,0,0,0.75) 0%,rgba(0,0,0,0) 100%); /* IE10+ */
+    background: linear-gradient(to right,  rgba(0,0,0,0.75) 0%,rgba(0,0,0,0) 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bf000000', endColorstr='#00000000',GradientType=1 ); /* IE6-9 */
+
+}
+.pagetitle{
+    font-size: 1.5em;
+    color: #E2D1B2;
+    padding-left: 1em;
+}
+
+.tagaddcontainer {
+    position: absolute;
+    display: inline-block;
+    height: 100%;
+    width: 35%;
+    left: 0%;
+    top: 0;
+    background-color: rgba(0, 0, 0, .25);
+}
+
+.taglistcontainer {
+    left: 35%;
+    top: 0;
+    position: absolute;
+    display: inline-block;
+    height: 100%;
+    width: 65%;
+    background-color: rgba(255, 255, 255, .25);
+}
+
+#slider-vertical {
+    position: absolute;
+    bottom: 1%;
+    left: 20%;
+    height: 300px;
+}
+
+div.bottom {
+    border-top: thin solid #958567;
+    border-left: thin solid #958567;
+    box-shadow: 10px 10px 5px #888888;
+    position:fixed;
+    bottom:0px;
+    height:100px;
+    left:20%;
+    right:0px;
+    width: 80%;
+    background-color: rgba(178,200,226, .8);
+    font-family: 'Economica', sans-serif;
+}
+
+.menuloading {
+background: white url("../loading.gif");
+}
+
+ .ui-autocomplete-loading {
+background: white url("images/ui-anim_basic_16x16.gif") right center no-repeat;
+}
+  .ui-autocomplete-category {
+    font-weight: bold;
+    padding: .2em .4em;
+    margin: .8em 0 .2em;
+    line-height: 1.5;
+    font-size: .5em;
+  }
+
+  .ui-menu-item {
+    font-size: .5em;
+  }
+
+.ui-slider-vertical {
+    width: 0.2em;
+    height: 100px;
+}
+
+.ui-slider .ui-slider-handle {
+    width: 0.7em;
+    height: 0.7em;
+}
+
+.taginstance {
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    background-color: rgba(255,255,255,.5);
+    font-size: 1em;
+    border-radius: 25px;
+}
+
+.taginstancenew {
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    background-color: rgba(255,255,255,1);
+    font-size: 1em;
+    border-radius: 25px;
+}
+
+
+.tagtype {
+
+    font-weight: bold;
+    margin-right: 5px;
+    color:#3880ad;
+}
+
+.tagtext {
+    font-size: 1.5em;
+}
+
+.tagaction {
+    font-size: .75em;
+    margin-left: 5px;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.dialogs {
+    display: none;
+}
+
+fieldset { padding:0; border:0; margin-top:25px; }
+.ui-dialog .ui-state-error { padding: .3em; }
+.validateTips { border: 1px solid transparent; padding: 0.3em; }
