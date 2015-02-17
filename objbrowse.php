@@ -26,6 +26,7 @@ if (!$docID) {
 	$db = $m->amesdb;
 	$collection = $db->scanpages;	
 	$cursor=$collection->find( array( 'objid' => ($docID) ) );
+	$cursor->sort(array('sectionLabel' => 1, 'sequence' => 1));
 	
 	foreach ($cursor as $document) {
 		array_push($output, $document);
