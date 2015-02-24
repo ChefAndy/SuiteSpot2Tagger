@@ -18,7 +18,7 @@ function mainMenu() {
 			items.push( "<li id='entry_'" + val._id.$id + "' class='navlink'> <span id='" + val._id.$id + "' class='naventry'>" + val.label + "</span>(<a target='_blank' href='" + val.urn + "'>PDS</a>)</li>" );
 		});
 		$( "<ul/>", {
-			"class": "my-new-list",
+			"class": "navlist",
 			html: items.join( "" )
 		}).appendTo( "nav.leftpanel" );
 		$('nav.leftpanel').removeClass('menuloading');
@@ -320,11 +320,26 @@ function editTagDialog(tagid, existingtag, existingtype) {
 
 function addPages(data) {
 	var items = [];
+	var oldsection;
 	$.each( data, function( pagekey, pageval ) {
+
+		if (pageval.sectionLabel) {
+			console.log(pageval.sectionLabel);
+		}
+		if (pageval.sectionLabel != oldsection) {
+			oldsection = pageval.sectionLabel;
+			if (pageval.sectionLabel === null) {
+				items.push( "<li class='pagesection'> No Section </li>" );
+			}
+			else {
+				items.push( "<li class='pagesection'> " + pageval.sectionLabel+ "</li>" );
+				console.log(pageval.sectionLabel);
+			}
+		}
 		items.push( "<li class='pageitem'> <a class='pagelink' target='idsscreen' id='" + pageval._id+ "'' href='" + pageval.image + "?buttons=y'>" + pageval.label + "</a></li>" );
 	});
 	$( "<ul/>", {
-		"class": "my-new-list",
+		"class": "navlist",
 		html: items.join( "" )
 	}).appendTo( "nav.leftpanel" );	
 }

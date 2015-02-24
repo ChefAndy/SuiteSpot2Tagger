@@ -31,10 +31,11 @@ a{
 
 
 /*  Nav Stuff */
-
+.navlist {
+    margin-top: 15px;
+}
 .toctitle {
     font-size: 1em;
-    width: 100%;
     text-align: center;
     height: 60px;
     top: 20px;
@@ -48,6 +49,13 @@ a{
 .naventry {
     text-decoration: underline;
     cursor: pointer;
+}
+
+.pagesection {
+    margin-top: 10px;
+    margin-left: -5px;
+    list-style-type: none;
+    font-weight: bold;
 }
 
 #navcontainer {
