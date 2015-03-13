@@ -14,18 +14,19 @@ $mysql_ObjID=0;
 $mysql_PagID=0;
 $mysql_TagID=0;
 
-echo "CREATE TABLE objects (id INT, urn VARCHAR(50), title VARCHAR(256), label VARCHAR(256), imgct INT, thumbnail VARCHAR(50), drsID INT, mongoID VARCHAR(24));";
-echo "CREATE TABLE tags (id, page_id, object_id, type, tag, mongoObjid, mognoPageID, mongoTagID);";
-echo "CREATE TABLE pages (id, object_id, sectionLabel, sectionPagestart, sectionPageend, sectionSeqstart, sectionSeqend, sectionLlabelrange, sectionSeqrange, sectionLink, label, pagelabel, sequence, pagenum, thumb, image, link, mongoObjid, mognoPageID);";
+echo "CREATE TABLE objects (id INT, urn VARCHAR(50), title VARCHAR(256), entrylabel VARCHAR(256), imgct INT, thumbnail VARCHAR(50), drsID INT, mongoID VARCHAR(24));";
+echo "CREATE TABLE tags (id INT, object_id INT, ttype VARCHAR(256), tag VARCHAR(256), mongoObjid VARCHAR(64), mognoPageID VARCHAR(64), mongoTagID VARCHAR(64));";
+echo "CREATE TABLE pages (id INT, object_id INT, sectionLabel VARCHAR(256), sectionPagestart  VARCHAR(256), sectionPageend  VARCHAR(256), sectionSeqstart INT, sectionSeqend INT, sectionLlabelrange VARCHAR(256), sectionSeqrange VARCHAR(256), sectionLink VARCHAR(256), entrylabel VARCHAR(256), pagelabel VARCHAR(256), sequence INT, pagenum VARCHAR(256), thumb VARCHAR(256), image VARCHAR(256), link VARCHAR(256), mongoObjid VARCHAR(64), mognoPageID VARCHAR(64));";
+
 
 foreach ($scandataIterator as $scandataresult){
 		$mysql_ObjID++;
         $docID=strval($scandataresult['_id']);
-        echo "INSERT INTO objects (id, urn, title, label, imgct, thumbnail, drsID, mongoID) VALUES("
+        echo "INSERT INTO objects (id, urn, title, entrylabel, imgct, thumbnail, drsID, mongoID) VALUES("
         	.$mysql_ObjID.", '"
         	.mysql_escape_string( strval($scandataresult['urn']))."', '"
         	.mysql_escape_string(strval($scandataresult['title']))."', '"
-        	.mysql_escape_string(strval($scandataresult['label']))."', '"
+        	.mysql_escape_string(strval($scandataresult['entrylabel']))."', '"
         	.mysql_escape_string(strval($scandataresult['imgct']))."', '"
         	.mysql_escape_string(strval($scandataresult['thumbnail']))."', '"
         	.mysql_escape_string(strval($scandataresult['drsID']))."', '"
@@ -54,7 +55,7 @@ foreach ($scandataIterator as $scandataresult){
                 if (array_key_exists('sectionSeqrange', $pageresult)) { $sectionSeqrange=mysql_escape_string( strval($pageresult['sectionSeqrange'])); }
                 if (array_key_exists('sectionLink', $pageresult)) { $sectionLink=mysql_escape_string( strval($pageresult['sectionLink'])); }
 
-        	    echo "\tINSERT INTO pages (id, object_id, sectionLabel, sectionPagestart, sectionPageend, sectionSeqstart, sectionSeqend, sectionLlabelrange, sectionSeqrange, sectionLink, label, pagelabel, sequence, pagenum, thumb, image, link, mongoObjid, mognoPageID) VALUES("
+        	    echo "\tINSERT INTO pages (id, object_id, sectionLabel, sectionPagestart, sectionPageend, sectionSeqstart, sectionSeqend, sectionLlabelrange, sectionSeqrange, sectionLink, entrylabel, pagelabel, sequence, pagenum, thumb, image, link, mongoObjid, mognoPageID) VALUES("
 		        	.$mysql_PagID.", "
 		        	.$mysql_ObjID.", '"
 		        	.$sectionLabel."', '"
@@ -65,7 +66,7 @@ foreach ($scandataIterator as $scandataresult){
 		        	.$sectionLlabelrange."', '"
 		        	.$sectionSeqrange."', '"
 		        	.$sectionLink."', '"
-		        	.mysql_escape_string(strval($pageresult['label']))."', '"
+		        	.mysql_escape_string(strval($pageresult['entrylabel']))."', '"
 		        	.mysql_escape_string(strval($pageresult['pagelabel']))."', '"
 		        	.mysql_escape_string(strval($pageresult['sequence']))."', '"
 		        	.mysql_escape_string(strval($pageresult['pagenum']))."', '"
@@ -81,7 +82,7 @@ foreach ($scandataIterator as $scandataresult){
 
 						$mysql_TagID++;
                         $tagID=strval($tagsresult['_id']);
-	        	    echo "\tINSERT INTO tags (id, , page_id, object_id, type, tag, mongoObjid, mognoPageID, mongoTagID) VALUES("
+	        	    echo "\tINSERT INTO tags (id, page_id, object_id, ttype, tag, mongoObjid, mognoPageID, mongoTagID) VALUES("
 			        	.$mysql_TagID.", "
 			        	.$mysql_PagID.", "
 			        	.$mysql_ObjID.", '"
