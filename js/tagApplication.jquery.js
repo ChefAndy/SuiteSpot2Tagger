@@ -63,7 +63,7 @@ function makeLinksClickable() {
 			max: 300,
 			value: 100,
 			slide: function( event, ui ) {
-				$(".bottom").css({height: ui.value });
+				$(".bottom").css({height: ui.value * 2 });
 			}
 		});
 	});
