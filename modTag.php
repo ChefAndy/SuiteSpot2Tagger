@@ -31,17 +31,21 @@ if (array_key_exists('remove', $_GET)) {
 		$edit=$matches[0];
 		$thisid=new MongoId($edit);
 
-		if (preg_match('/^[A-Za-z0-9\s\',\.]+$/', $_GET["tag"], $matches)) {
+/*
+		#if (preg_match('/^[A-Za-z0-9\s\',\.]+$/', $_GET["tag"], $matches)) {
 			$tag=htmlspecialchars($matches[0]);
-		} else {
-			array_push($result['exception'], "tag");
-		}
+		#} else {
+		#	array_push($result['exception'], "tag");
+		#}
 
 		if (preg_match('/^[A-Za-z0-9]+$/', $_GET["type"], $matches)) {
 			$type=$matches[0];
 		} else {
 			array_push($result['exception'], "type");
 		}
+		*/
+		$type=htmlspecialchars($_GET["type"]);
+		$tag=htmlspecialchars($_GET["tag"]);
 
 		if ($type && $tag && is_object($thisid)) {
 			if ($collection->update( array('_id'=> $thisid) , array('$set' => array("tag" => $tag, "type" => $type)))) {
@@ -72,17 +76,23 @@ if (array_key_exists('remove', $_GET)) {
 		array_push($result['exception'], "objID");
 	}
 
+	/*
 	if (preg_match('/^[A-Za-z0-9\s\',\.\(\);]+$/', $_GET["tag"], $matches)) {
 		$tag=htmlspecialchars($matches[0]);
 	} else {
 		array_push($result['exception'], "tag");
 	}
+	*/
+	$tag=htmlspecialchars($_GET["tag"]);
 
+/*
 	if (preg_match('/^[A-Za-z0-9]+$/', $_GET["type"], $matches)) {
 		$type=$matches[0];
 	} else {
 		array_push($result['exception'], "type");
 	}
+	*/
+		$type=htmlspecialchars($_GET["type"]);
 
 	if ($pageID && $tag && $objID && $pageID) {
 		$thisid=new MongoId();

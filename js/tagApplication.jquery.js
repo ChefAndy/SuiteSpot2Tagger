@@ -5,6 +5,7 @@ var navmenuposition=1;
 var currentnavitem=null;
 var currentnavid=null;
 var currentpageid=null;
+var currentDocID=null;
 
 function mainMenu() {
 	$.getJSON( "./objbrowse.php", function( data ) {
@@ -171,7 +172,8 @@ function newTag(event) {
 	var tag = $("#taginput").val();
 	var tagid = null;
 
-	$.getJSON( "./modTag.php?pageID="+currentpageid+ "&objID=" + currentnavid+ "&tag=" + tag+ "&type=" + category, function( returndata ) {
+	console.log( "./modTag.php?pageID="+currentpageid+ "&objID=" + currentnavid+ "&tag=" + encodeURIComponent(tag)+ "&type=" + encodeURIComponent(category));
+	$.getJSON( "./modTag.php?pageID="+currentpageid+ "&objID=" + currentnavid+ "&tag=" + encodeURIComponent(tag)+ "&type=" + encodeURIComponent(category), function( returndata ) {
 		if (returndata.exception) {
 			var exceptions = [];
 			$.each(returndata.exception, function(index, val) {
@@ -222,8 +224,8 @@ function removeTagDialog(tagid) {
 
 
 function editTag(tagid, newtag, newtype) {
-	console.log("./modTag.php?edit="+tagid+"&tag="+newtag+"&type="+newtype);
-	$.getJSON( "./modTag.php?edit="+tagid+"&tag="+newtag+"&type="+newtype, function( returndata ) {
+	console.log("./modTag.php?edit="+tagid+"&tag="+encodeURIComponent(newtag)+"&type="+encodeURIComponent(newtype));
+	$.getJSON( "./modTag.php?edit="+tagid+"&tag="+encodeURIComponent(newtag)+"&type="+encodeURIComponent(newtype), function( returndata ) {
 		if (returndata.exception) {
 			alert("Could not modify tag. Please contact asilva@law.harvard.edu for support.");
 		} else {
